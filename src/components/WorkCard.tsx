@@ -16,6 +16,7 @@ const WorkCardClass = css({
   width: "16rem",
   height: "24rem",
   padding: "16px",
+  color: "#333",
 });
 
 const WorkTagsClass = css({
@@ -29,24 +30,32 @@ const WorkTagsClass = css({
 
 const WorkCard: Component<{ work: WorkInfo }> = (props) => {
   return (
-    <div class={WorkCardClass}>
-      <Show when={props.work.imagePath}>
-        <img src={props.work.imagePath} alt={props.work.title} />
-      </Show>
-      <h3>{props.work.title}</h3>
-      <Show when={props.work.description}>
-        <p>{props.work.description}</p>
-      </Show>
-      <ul class={WorkTagsClass}>
-        <For each={props.work.tags}>
-          {(tag) => (
-            <li>
-              <WorkTag displayName={tag} />
-            </li>
-          )}
-        </For>
-      </ul>
-    </div>
+    <a href={props.work.url} class={css({ textDecoration: "none" })}>
+      <div class={WorkCardClass}>
+        <Show when={props.work.imagePath}>
+          <img src={props.work.imagePath} alt={props.work.title} />
+        </Show>
+        <div>
+          <h3>{props.work.title}</h3>
+        </div>
+        <div>
+          <ul class={WorkTagsClass}>
+            <For each={props.work.tags}>
+              {(tag) => (
+                <li>
+                  <WorkTag displayName={tag} />
+                </li>
+              )}
+            </For>
+          </ul>
+        </div>
+        <Show when={props.work.description}>
+          <div>
+            <p>{props.work.description}</p>
+          </div>
+        </Show>
+      </div>
+    </a>
   );
 };
 
