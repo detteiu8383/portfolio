@@ -2,6 +2,7 @@
 import { Routes } from "solid-start/root";
 import { ErrorBoundary } from "solid-start/error-boundary";
 
+import "./reset.css"
 import "./index.css";
 import { Suspense } from "solid-js";
 import Header from "./components/Header";
