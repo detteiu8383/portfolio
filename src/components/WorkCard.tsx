@@ -12,6 +12,9 @@ export type WorkInfo = {
 const WorkCard: Component<{ work: WorkInfo }> = (props) => {
   return (
     <div>
+      <Show when={props.work.imagePath}>
+        <img src={props.work.imagePath} alt={props.work.title} />
+      </Show>
       <h3>{props.work.title}</h3>
       <Show when={props.work.description}>
         <p>{props.work.description}</p>
